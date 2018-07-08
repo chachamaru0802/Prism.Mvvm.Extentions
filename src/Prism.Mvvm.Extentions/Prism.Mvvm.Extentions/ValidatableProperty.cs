@@ -56,6 +56,11 @@ namespace Prism.Mvvm.Extentions
 
         public void ValidateProperty(T value, [CallerMemberName] string propertyName = null)
         {
+            if(_validationAttributes == null)
+            {
+                return;
+            }
+
             var context = new ValidationContext(this) { MemberName = propertyName };
             var validationErrors = new List<ValidationResult>();
 
